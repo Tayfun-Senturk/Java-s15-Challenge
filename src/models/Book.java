@@ -55,4 +55,5 @@ public abstract class Book {
     public String getBookID() {
         return bookID;
     }
+    public abstract void use();
 }

@@ -1,6 +1,6 @@
 package models;
 
-// Magazines.java
+
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -15,7 +15,7 @@ public class Magazines extends Book {
         System.out.println("Magazine "+getBookID()+": " + this.getTitle() + " by " + this.getAuthor() + ", Edition: " + this.getEdition() + " |" + issuedTo+"|");
     }
 
-    public void entertainment() {
+    public void use() {
         System.out.println("Enjoying entertainment with magazine: " + this.getTitle());
     }
 }

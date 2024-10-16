@@ -69,6 +69,10 @@ public class Main {
         book3.getAuthor().whoyouare();
         book3.getAuthor().showBook();
 
+        book20.use();
+        book19.use();
+        book18.use();
+
         System.out.print("Enter your name: ");
         String enteredName = scanner.nextLine();
         System.out.println("Enter your password:");

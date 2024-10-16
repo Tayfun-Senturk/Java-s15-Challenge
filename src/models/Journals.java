@@ -14,7 +14,7 @@ public class Journals extends Book {
         System.out.println("Journal "+getBookID()+": " + this.getTitle() + " by " + this.getAuthor() + ", Edition: " + this.getEdition() + " |" + issuedTo+"|");
     }
 
-    public void research() {
+    public void use() {
         System.out.println("Researching with journal: " + this.getTitle());
     }
 }

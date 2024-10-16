@@ -18,7 +18,7 @@ public class Faculty extends MemberRecord {
         }
     }
 
-    public void teach() {
+    public void use() {
         System.out.println(this.name + " is teaching using library books.");
     }
 }
