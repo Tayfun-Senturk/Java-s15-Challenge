@@ -7,6 +7,7 @@ import java.util.Date;
 public class Magazines extends Book {
     public Magazines(String bookID, Author author, String name, double price, String edition, LocalDate dateOfPurchase) {
         super(bookID, author, name, price, edition, dateOfPurchase);
+        author.newBook(this);
     }
 
     @Override

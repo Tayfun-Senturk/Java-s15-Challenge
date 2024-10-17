@@ -13,26 +13,39 @@ public class Main {
         Library library = new Library();
         Librarian librarian = new Librarian("admin", "password", library);
 
-        Book book1 = new Journals("B01", new Author("John"), "Mystery of Worlds", 100, "1st Edition", LocalDate.of(2018, 1, 3));
-        Book book2 = new Magazines("B02", new Author("John"), "Science Today", 50, "2nd Edition", LocalDate.of(2015, 5, 15));
-        Book book3 = new StudyBooks("B03", new Author("Linda"), "Physics Fundamentals", 75, "3rd Edition", LocalDate.of(2018, 2, 20));
-        Book book4 = new Journals("B04", new Author("Linda"), "Medical Research", 120, "1st Edition", LocalDate.of(2016, 10, 5));
-        Book book5 = new Magazines("B05", new Author("David"), "Fashion Trends", 30, "2nd Edition", LocalDate.of(2019, 8, 12));
-        Book book6 = new StudyBooks("B06", new Author("David"), "Organic Chemistry", 80, "4th Edition", LocalDate.of(2013, 3, 25));
-        Book book7 = new Journals("B07", new Author("Sophia"), "Fluid Dynamics", 110, "1st Edition", LocalDate.of(2020, 1, 15));
-        Book book8 = new Magazines("B08", new Author("Sophia"), "Car Magazine", 40, "3rd Edition", LocalDate.of(2014, 6, 10));
-        Book book9 = new StudyBooks("B09", new Author("Michael"), "Advanced Calculus", 70, "5th Edition", LocalDate.of(2011, 7, 30));
-        Book book10 = new Journals("B10", new Author("Michael"), "Life on Earth", 125, "1st Edition", LocalDate.of(2017, 4, 8));
-        Book book11 = new Journals("B11", new Author("Emma"), "Culinary Secrets", 130, "2nd Edition", LocalDate.of(2021, 9, 17));
-        Book book12 = new StudyBooks("B12", new Author("Emma"), "Quantum Mechanics", 150, "1st Edition", LocalDate.of(2010, 11, 3));
-        Book book13 = new Magazines("B13", new Author("Henry"), "Entertainment Weekly", 60, "1st Edition", LocalDate.of(2013, 7, 7));
-        Book book14 = new StudyBooks("B14", new Author("Henry"), "Engineering Thermodynamics", 90, "2nd Edition", LocalDate.of(2009, 5, 25));
-        Book book15 = new Journals("B15", new Author("Oliver"), "Medical Ethics", 140, "1st Edition", LocalDate.of(2014, 1, 29));
-        Book book16 = new Magazines("B16", new Author("Oliver"), "Automobile Trends", 45, "4th Edition", LocalDate.of(2018, 10, 1));
-        Book book17 = new StudyBooks("B17", new Author("James"), "Mathematical Theories", 80, "3rd Edition", LocalDate.of(2020, 3, 15));
-        Book book18 = new Journals("B18", new Author("James"), "Scientific Innovations", 115, "2nd Edition", LocalDate.of(2015, 7, 21));
-        Book book19 = new Magazines("B19", new Author("William"), "Physics Monthly", 60, "1st Edition", LocalDate.of(2016, 9, 10));
-        Book book20 = new StudyBooks("B20", new Author("William"), "Fluid Mechanics", 95, "1st Edition", LocalDate.of(2018, 12, 11));
+        Map<String, Author> authors = new HashMap<>();
+
+        authors.putIfAbsent("John", new Author("John"));
+        authors.putIfAbsent("Linda", new Author("Linda"));
+        authors.putIfAbsent("David", new Author("David"));
+        authors.putIfAbsent("Sophia", new Author("Sophia"));
+        authors.putIfAbsent("Michael", new Author("Michael"));
+        authors.putIfAbsent("Emma", new Author("Emma"));
+        authors.putIfAbsent("Henry", new Author("Henry"));
+        authors.putIfAbsent("Oliver", new Author("Oliver"));
+        authors.putIfAbsent("James", new Author("James"));
+        authors.putIfAbsent("William", new Author("William"));
+
+        Book book1 = new Journals("B01", authors.get("John"), "Mystery of Worlds", 100, "1st Edition", LocalDate.of(2018, 1, 3));
+        Book book2 = new Magazines("B02", authors.get("John"), "Science Today", 50, "2nd Edition", LocalDate.of(2015, 5, 15));
+        Book book3 = new StudyBooks("B03", authors.get("Linda"), "Physics Fundamentals", 75, "3rd Edition", LocalDate.of(2018, 2, 20));
+        Book book4 = new Journals("B04", authors.get("Linda"), "Medical Research", 120, "1st Edition", LocalDate.of(2016, 10, 5));
+        Book book5 = new Magazines("B05", authors.get("David"), "Fashion Trends", 30, "2nd Edition", LocalDate.of(2019, 8, 12));
+        Book book6 = new StudyBooks("B06", authors.get("David"), "Organic Chemistry", 80, "4th Edition", LocalDate.of(2013, 3, 25));
+        Book book7 = new Journals("B07", authors.get("Sophia"), "Fluid Dynamics", 110, "1st Edition", LocalDate.of(2020, 1, 15));
+        Book book8 = new Magazines("B08", authors.get("Sophia"), "Car Magazine", 40, "3rd Edition", LocalDate.of(2014, 6, 10));
+        Book book9 = new StudyBooks("B09", authors.get("Michael"), "Advanced Calculus", 70, "5th Edition", LocalDate.of(2011, 7, 30));
+        Book book10 = new Journals("B10", authors.get("Michael"), "Life on Earth", 125, "1st Edition", LocalDate.of(2017, 4, 8));
+        Book book11 = new Journals("B11", authors.get("Emma"), "Culinary Secrets", 130, "2nd Edition", LocalDate.of(2021, 9, 17));
+        Book book12 = new StudyBooks("B12", authors.get("Emma"), "Quantum Mechanics", 150, "1st Edition", LocalDate.of(2010, 11, 3));
+        Book book13 = new Magazines("B13", authors.get("Henry"), "Entertainment Weekly", 60, "1st Edition", LocalDate.of(2013, 7, 7));
+        Book book14 = new StudyBooks("B14", authors.get("Henry"), "Engineering Thermodynamics", 90, "2nd Edition", LocalDate.of(2009, 5, 25));
+        Book book15 = new Journals("B15", authors.get("Oliver"), "Medical Ethics", 140, "1st Edition", LocalDate.of(2014, 1, 29));
+        Book book16 = new Magazines("B16", authors.get("Oliver"), "Automobile Trends", 45, "4th Edition", LocalDate.of(2018, 10, 1));
+        Book book17 = new StudyBooks("B17", authors.get("James"), "Mathematical Theories", 80, "3rd Edition", LocalDate.of(2020, 3, 15));
+        Book book18 = new Journals("B18", authors.get("James"), "Scientific Innovations", 115, "2nd Edition", LocalDate.of(2015, 7, 21));
+        Book book19 = new Magazines("B19", authors.get("William"), "Physics Monthly", 60, "1st Edition", LocalDate.of(2016, 9, 10));
+        Book book20 = new StudyBooks("B20", authors.get("William"), "Fluid Mechanics", 95, "1st Edition", LocalDate.of(2018, 12, 11));
 
 
         MemberRecord member1 = new Faculty("M01", LocalDate.now(), "Dr.Alex", "New Jersey", "alex@university.com", new Reader("Dr.Alex"));
@@ -67,7 +80,7 @@ public class Main {
         library.newBook(book20);
 
         book3.getAuthor().whoyouare();
-        book3.getAuthor().showBook();
+        book4.getAuthor().showBook();
 
         book20.use();
         book19.use();

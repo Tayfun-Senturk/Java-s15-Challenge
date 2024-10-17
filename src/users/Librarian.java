@@ -11,8 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Librarian extends Person{
-    private String name;
+public class Librarian extends Person {
     private String password;
     private Map<Book, MemberRecord> issuedBooks = new HashMap<>();
     private Map<Book, LocalDate> borrowDates = new HashMap<>();
@@ -26,7 +25,7 @@ public class Librarian extends Person{
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public String getPassword() {
@@ -85,23 +84,23 @@ public class Librarian extends Person{
         return null;
     }
 
-    public void issueBook(Book book, MemberRecord reader,LocalDate date) {
+    public void issueBook(Book book, MemberRecord reader, LocalDate date) {
         if (book.getStatus()) {
-                issuedBooks.put(book, reader);
-                System.out.println("Issued: " + book.getTitle() + " to " + reader.getMemberName());
-                saveBorrowDate(book,date);
-                createBill(book, reader);
+            issuedBooks.put(book, reader);
+            System.out.println("Issued: " + book.getTitle() + " to " + reader.getMemberName());
+            saveBorrowDate(book, date);
+            createBill(book, reader);
         } else {
             System.out.println("Book is currently borrowed.");
         }
     }
 
-    public void returnBook(Book book, MemberRecord reader,LocalDate date) {
-        if (issuedBooks.containsKey(book)&&issuedBooks.get(book).equals(reader)) {
+    public void returnBook(Book book, MemberRecord reader, LocalDate date) {
+        if (issuedBooks.containsKey(book) && issuedBooks.get(book).equals(reader)) {
             issuedBooks.remove(book);
-            System.out.println(reader.getMemberName() +" Returned: " + book.getTitle());
-            refundBill(book,reader,date);
-        }else {
+            System.out.println(reader.getMemberName() + " Returned: " + book.getTitle());
+            refundBill(book, reader, date);
+        } else {
             System.out.println("Book is not issued to you.");
         }
     }
@@ -122,34 +121,31 @@ public class Librarian extends Person{
         System.out.println("A deposit of " + df.format(0.3 * book.getPrice()) + "$ has been charged for the book \"" + book.getTitle() + "\" rented by " + member.getMemberName() + ". A daily fee of " + df.format(0.02 * book.getPrice()) + "$ will be charged for each day the book is borrowed. You will receive a full refund of the deposit upon returning the book. Thank you for choosing our library!");
     }
 
-    public void refundBill (Book book,MemberRecord member,LocalDate returnDate) {
-        long daysBorrowed = ChronoUnit.DAYS.between(borrowDates.get(book),returnDate);
-        double borrowFee=Math.round(daysBorrowed*(book.getPrice()*0.02));
-        double deposit=Math.round((book.getPrice()*0.3));
-        if(borrowFee>deposit){
-            System.out.println("You have held the book titled " + book.getTitle() + " for " + daysBorrowed + " days. You must pay an additional fee of " +(borrowFee - deposit) + "$.");
-        }else{
+    public void refundBill(Book book, MemberRecord member, LocalDate returnDate) {
+        long daysBorrowed = ChronoUnit.DAYS.between(borrowDates.get(book), returnDate);
+        double borrowFee = Math.round(daysBorrowed * (book.getPrice() * 0.02));
+        double deposit = Math.round((book.getPrice() * 0.3));
+        if (borrowFee > deposit) {
+            System.out.println("You have held the book titled " + book.getTitle() + " for " + daysBorrowed + " days. You must pay an additional fee of " + (borrowFee - deposit) + "$.");
+        } else {
             System.out.println("You have held the book titled " + book.getTitle() + " for " + daysBorrowed + " days. Your deposit refund after deducting the borrowing fee is " + (deposit - borrowFee) + "$");
         }
-        member.getReader().returnBook(book,borrowFee);
-        member.payBill(deposit,borrowFee);
-
+        member.getReader().returnBook(book, borrowFee);
+        member.payBill(deposit, borrowFee);
     }
 
     public void saveBorrowDate(Book book, LocalDate borrowDate) {
         borrowDates.put(book, borrowDate);
     }
 
-
-    public void addMember(String Status,String memberId, String memberName, String memberAddress, String memberEmail) {
-        if(Status.equalsIgnoreCase("Faculty")){
-           MemberRecord newMember= new Faculty(memberId,LocalDate.now(),memberName,memberAddress,memberEmail,new Reader(memberName));
-           library.newMember(newMember);
-        }else if(Status.equalsIgnoreCase("Student")){
-            MemberRecord newMember= new Student(memberId,LocalDate.now(),memberName,memberAddress,memberEmail,new Reader(memberName));
+    public void addMember(String Status, String memberId, String memberName, String memberAddress, String memberEmail) {
+        if (Status.equalsIgnoreCase("Faculty")) {
+            MemberRecord newMember = new Faculty(memberId, LocalDate.now(), memberName, memberAddress, memberEmail, new Reader(memberName));
+            library.newMember(newMember);
+        } else if (Status.equalsIgnoreCase("Student")) {
+            MemberRecord newMember = new Student(memberId, LocalDate.now(), memberName, memberAddress, memberEmail, new Reader(memberName));
             library.newMember(newMember);
         }
-
     }
 
     @Override
