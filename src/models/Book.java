@@ -24,18 +24,22 @@ public abstract class Book {
 
 
     public double getPrice() {
+
         return price;
     }
 
     public String getTitle() {
+
         return name;
     }
 
     public Author getAuthor() {
+
         return author;
     }
 
     public String getEdition() {
+
         return edition;
     }
 

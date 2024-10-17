@@ -291,7 +291,9 @@ public class Main {
                         }
                     } else {
                         librarian.returnBook(book, librarian.verifyMember(memberName), date);
-                        librarian.verifyMember(memberName).decBookIssued();
+                        if(librarian.verifyMember(memberName)!=null){
+                            librarian.verifyMember(memberName).decBookIssued();
+                        }
                     }
                     running = false;
                     break;

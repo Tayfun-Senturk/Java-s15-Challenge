@@ -23,15 +23,18 @@ public class Author extends Person {
 
     @Override
     public void whoyouare() {
+
         System.out.println("I am Author: " + this.name);
     }
 
     @Override
     public String toString() {
+
         return this.name;
     }
 
     public boolean equalsIgnoreCase(String author) {
+
         return this.name.equalsIgnoreCase(author);
     }
 }
